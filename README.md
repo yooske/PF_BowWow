@@ -16,7 +16,8 @@
 * 他の飼い主とのコミュニケーションや、愛犬たちとの日常の共有ができる。
 
 ## 設計書
-<...>
+* ER図： https://drive.google.com/file/d/1fKHbNOOrtkISGAdd3TquDYpICpCYPVIL/view?usp=sharing
+* テーブル定義書： https://docs.google.com/spreadsheets/d/1eEeGRXIZqCpL5orUJtgIjYrrbU2wLF8Wj5_iEQQ35L4/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
