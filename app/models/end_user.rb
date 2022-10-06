@@ -3,4 +3,13 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :name, presence: true
+  validates :nickname, presence: true
+  validates :introduction, presence: true
+
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end
