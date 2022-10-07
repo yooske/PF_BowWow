@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>ニックネーム</th>
+      <th>自己紹介</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% end_users.each do |end_user| %>
+      <tr>
+        <td><%= image_tag end_user.get_profile_image(50,50) %></td>
+        <td><%= end_user.nickname %></td>
+        <td><%= render "public/relationships/btn", end_user: end_user %></td>
+        <td><%= link_to 'ユーザーページ', public_end_user_path(end_user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

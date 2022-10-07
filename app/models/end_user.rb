@@ -4,6 +4,13 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  #自分がフォローされる
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+  #自分がフォローする
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  
   has_one_attached :profile_image
 
   validates :name, presence: true
@@ -20,6 +27,18 @@ class EndUser < ApplicationRecord
 
   def active_for_authentication?
     super && (is_deleted == false)
+  end
+  
+  def follow(user)
+    relationships.create(followed_id: user.id)
+  end
+
+  def unfollow(user)
+    relationships.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
   end
 
 end

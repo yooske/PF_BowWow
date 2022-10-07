@@ -1,13 +1,37 @@
 <div class="container">
-  <div class="main-visual col-8 mx-auto text-center">
-      <h4 class="py-4">マイページ</h4>
-      <div class="mb-4"><%= image_tag @end_user.get_profile_image(140,140) %></div>
-      <h5 class="d-flex my-4"><span class="col-6">名前</span><span class="col-6"><%= @end_user.name %></span></h5>
-      <h5 class="d-flex my-4"><span class="col-6">ニックネーム</span><span class="col-6"><%= @end_user.nickname %></span></h5>
-      <h5 class="d-flex my-3"><span class="col-6">自己紹介</span><span class="col-6"><%= @end_user.introduction %></span></h5>
-    <% if @end_user == current_end_user %>
-      <div class="py-3"><%= link_to "プロフィールを編集する", edit_public_end_user_path(@end_user), class: "btn btn-light rounded-pill" %></div>
-    <% end %>
+  <div class="main-visual col-8 mx-auto">
+    <h4 class="py-4 text-center">マイページ</h4>
+    <div class="mb-4 text-center"><%= image_tag @end_user.get_profile_image(140,140) %></div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><h5>ニックネーム</h5></td>
+          <td><h5><%= @end_user.nickname %></h5></td>
+        </tr>
+        <tr>
+          <td><h5>自己紹介</h5></td>
+          <td><h5><%= @end_user.introduction %></h5></td>
+        </tr>
+        <tr>
+          <td><h5>フォロー</h5></td>
+          <td><h5><%= link_to @end_user.followings.count, public_end_user_followings_path(@end_user) %></h5></td>
+        </tr>
+        <tr>
+          <td><h5>フォロワー</h5></td>
+          <td><h5><%= link_to @end_user.followers.count, public_end_user_followers_path(@end_user) %></h5></td>
+        </tr>
+        <tr>
+          <td class="py-4">
+            <% if @end_user == current_end_user %>
+              <%= link_to "プロフィールを編集する", edit_public_end_user_path(@end_user), class: "btn btn-info rounded-pill" %>
+            <% else %>
+              <%= render "public/relationships/btn", end_user: @end_user %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
   </div>
   <div>
     <h4 class="text-center mt-3">投稿一覧</h4>
