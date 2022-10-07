@@ -1,0 +1,21 @@
+<div class="container">
+  <h4 class="mb-5">タグ一覧・追加</h4>
+  <%= render 'layouts/error_message', obj: @tag %>
+  <div class="mb-5">
+    <%= form_with model: @tag, url: admin_tags_path, method: :post, class: "d-flex" do |f| %>
+      <div class="px-3">タグ名</div>
+      <div class="px-3"><%= f.text_field :name %></div>
+      <div class="px-3"><%= f.submit 'タグを作成する', class: "btn btn-light btn-sm rounded-pill" %></div>
+    <% end %>
+  </div>
+  <table class="table">
+    <h5>一覧</h5>
+    <% @tags.each do |tag| %>
+      <tbody>
+        <td><%= tag.name %></td>
+        <td><%= link_to "編集する", edit_admin_tag_path(tag), class: 'btn btn-secondary rounded-pill' %></td>
+      </tbody>
+    <% end %>
+  </table>
+  <%= paginate @tags %>
+</div>

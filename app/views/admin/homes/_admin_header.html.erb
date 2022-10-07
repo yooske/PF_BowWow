@@ -1,0 +1,45 @@
+<header>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg">
+      <%= link_to root_path do %>
+        <h2>BowWow</h2>
+      <% end %>
+      <ul class="navbar-nav ml-auto">
+        <li class="mr-3">管理者画面</li>
+        <% if admin_signed_in? %>
+        <!--管理者ログイン時-->
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-link text-dark" %></li>
+        <% else %>
+        <!--未ログイン時-->
+          <li><%= link_to "ログイン", new_end_user_session_path, class: "btn btn-link text-dark" %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <nav class="navbar navbar-expand-lg">
+      <ul class="col-12 navbar-nav mx-auto justify-content-between">
+        <li>
+          <%= link_to admin_root_path, class: "btn btn-light rounded-pill" do %>
+            <i class="fas fa-home"></i>
+            ホーム
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_tags_path, class: "btn btn-light rounded-pill" do %>
+            タグ作成
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_end_users_path, class: "btn btn-light rounded-pill" do %>
+            会員一覧
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_groups_path, class: "btn btn-light rounded-pill" do %>
+            <i class="fas fa-user-friends"></i>
+            グループ一覧
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

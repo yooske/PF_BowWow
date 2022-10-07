@@ -12,7 +12,13 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <% if admin_signed_in? %>
+    <!--adminアカウントがログイン時のheader-->
+      <%= render 'admin/homes/admin_header' %>
+    <% else %>
+    <!--ログイン前とend_userログイン時のheader-->
+      <%= render 'layouts/header' %>
+    <% end %>
     <main class="pt-4 mb-auto">
     <%= yield %>
     </main>
