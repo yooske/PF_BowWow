@@ -1,2 +1,13 @@
-<h1>Public::EndUsers#confirm</h1>
-<p>Find me in app/views/public/end_users/confirm.html.erb</p>
+<div class="container">
+  <div class="col-8 mx-auto">
+    <h2 class="mb-5 text-center">本当に退会しますか？</h2>
+    <p class="mb-5">
+      退会すると、会員登録情報や<br>
+      投稿やグループの参加ができなくなります。<br>
+      また、これまでの投稿も見ることができなくなります。<br>
+      退会する場合は、「退会する」をクリックしてください。
+    </p>
+    <%= link_to '退会しない', edit_public_end_user_path(current_end_user), class: "btn btn-secondary" %>
+    <%= link_to '退会する', withdraw_public_end_users_path, method: :patch, class: "btn btn-danger float-right" %>
+  </div>
+</div>

@@ -1,2 +1,16 @@
-<h1>Public::EndUsers#show</h1>
-<p>Find me in app/views/public/end_users/show.html.erb</p>
+<div class="container">
+  <div class="main-visual col-8 mx-auto text-center">
+      <h4 class="py-4">マイページ</h4>
+      <div class="mb-4"><%= image_tag @end_user.get_profile_image(140,140) %></div>
+      <h5 class="d-flex my-4"><span class="col-6">名前</span><span class="col-6"><%= @end_user.name %></span></h5>
+      <h5 class="d-flex my-4"><span class="col-6">ニックネーム</span><span class="col-6"><%= @end_user.nickname %></span></h5>
+      <h5 class="d-flex my-3"><span class="col-6">自己紹介</span><span class="col-6"><%= @end_user.introduction %></span></h5>
+    <% if @end_user == current_end_user %>
+      <div class="py-3"><%= link_to "プロフィールを編集する", edit_public_end_user_path(@end_user), class: "btn btn-light rounded-pill" %></div>
+    <% end %>
+  </div>
+  <div>
+    <h4 class="text-center mt-3">投稿一覧</h4>
+    <!--ユーザーの投稿一覧を表示-->
+  </div>
+</div>

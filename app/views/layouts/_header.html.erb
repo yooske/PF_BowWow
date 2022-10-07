@@ -7,9 +7,9 @@
       <ul class="navbar-nav ml-auto">
         <% if end_user_signed_in? %>
         <!--会員ログイン時-->
-          <li><%= link_to "マイページ", public_end_user_path(current_end_user.id), class: "btn rounded-pill" %></li>
-          <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
-          <li><%= link_to "投稿する", new_public_post_path, class: "btn" %></li>
+          <li><%= link_to "マイページ", public_end_user_path(current_end_user.id), class: "btn btn-light rounded-pill mr-3" %></li>
+          <li><%= link_to "投稿する", new_public_post_path, class: "btn btn-light rounded-pill" %></li>
+          <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "btn btn-link text-dark" %></li>
         <% else %>
         <!--未ログイン時-->
           <li><%= link_to "ログイン", new_end_user_session_path, class: "btn btn-link text-dark" %></li>
