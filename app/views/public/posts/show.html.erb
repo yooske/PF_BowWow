@@ -1,2 +1,24 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+  <div class="main-visual col-lg-8 mx-auto shadow-sm p-5 mb-4 bg-body rounded">
+    <h3 class="mb-3"><%= @post.title %></h3>
+    <div class="d-flex">
+      <%= image_tag @post.end_user.get_profile_image(50,50),class: "mr-4 mb-4" %>
+      <p class="mr-5"><%= @post.end_user.nickname %>さん</p>
+      <div>
+        <% if @end_user != current_end_user %>
+          <%= render "public/relationships/btn", end_user: @end_user %>
+        <% end %>
+      </div>
+    </div>
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image, size: "400x300", class: "mb-4" %><br>
+      <%= render "public/posts/show", post: @post %>
+    <% elsif @post.video.attached? %>
+      <%#= video_tag rails_blob_path(@post.video), size:"400x300" %>
+      <video class="video" src="<%= rails_blob_path(@post.video) %>" type="video/mp4" controls></video>
+      <%= render "public/posts/show", post: @post %>
+    <% else %>
+      <%= render "public/posts/show", post: @post %>
+    <% end %>
+  </div>
+</div>

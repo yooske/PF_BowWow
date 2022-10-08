@@ -1,3 +1,15 @@
 // Place all the styles related to the public/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+textarea {
+  width: 300px;
+}
+.tag {
+  background-color: #a7d28d;
+  padding: 3px 10px;
+  border-radius: 8px;
+}
+.video {
+    width: 400px;
+    height: 300px;
+}
