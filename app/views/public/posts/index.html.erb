@@ -1,2 +1,28 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="container">
+  <h4 class="mb-4">投稿一覧</h4>
+  <div class="d-flex flex-wrap justify-content-between">
+    <% @posts.each do |post| %>
+      <div class="post col-md-3 m-3 p-3">
+        <% if post.image.attached? %>
+          <%= link_to public_post_path(post), class: "text-dark" do %>
+            <p class="image-size text-center"><%= image_tag post.image, class: "col-md-12 mb-4" %></p>
+            <h5 class="mb-4"><%= post.title %></h5>
+          <% end %>
+          <%= render "public/posts/poster", post: post %>
+        <% elsif post.video.attached? %>
+          <%= link_to public_post_path(post), class: "text-dark" do %>
+            <p class="video-size text-center"><%= video_tag rails_blob_path(post.video),size: "200x150", class: "mb-4" %></p>
+            <h5 class="mb-4"><%= post.title %></h5>
+          <% end %>
+          <%= render "public/posts/poster", post: post %>
+        <% else %>
+          <%= link_to public_post_path(post), class: "text-dark" do %>
+            <h5 class="mb-4"><%= post.title %></h5>
+          <% end %>
+          <%= render "public/posts/poster", post: post %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @posts %>
+</div>

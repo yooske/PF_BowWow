@@ -11,7 +11,7 @@
       </div>
     </div>
     <% if @post.image.attached? %>
-      <%= image_tag @post.image, size: "400x300", class: "mb-4" %><br>
+      <%= image_tag @post.image, class: "image mb-4" %><br>
       <%= render "public/posts/show", post: @post %>
     <% elsif @post.video.attached? %>
       <%#= video_tag rails_blob_path(@post.video), size:"400x300" %>
@@ -19,6 +19,12 @@
       <%= render "public/posts/show", post: @post %>
     <% else %>
       <%= render "public/posts/show", post: @post %>
+    <% end %>
+    <% if @end_user == current_end_user %>
+      <div class="pt-4">
+        <%= link_to "編集する", edit_public_post_path(@post), class: "btn btn-secondary rounded-pill mr-5" %>
+        <%= link_to "削除する", public_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger rounded-pill" %>
+      </div>
     <% end %>
   </div>
 </div>
