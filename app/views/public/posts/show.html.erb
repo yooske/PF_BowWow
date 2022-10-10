@@ -1,13 +1,11 @@
 <div class="container">
-  <div class="main-visual col-lg-8 mx-auto shadow-sm p-5 mb-4 bg-body rounded">
+  <div class="main-visual col-lg-8 mx-auto shadow-sm p-5 pb-4 bg-body rounded">
     <h3 class="mb-3"><%= @post.title %></h3>
     <div class="d-flex">
       <%= image_tag @post.end_user.get_profile_image(50,50),class: "mr-4 mb-4" %>
       <p class="mr-5"><%= @post.end_user.nickname %>さん</p>
       <div>
-        <% if @end_user != current_end_user %>
-          <%= render "public/relationships/btn", end_user: @end_user %>
-        <% end %>
+        <%= render "public/relationships/btn", end_user: @end_user %>
       </div>
     </div>
     <% if @post.image.attached? %>
@@ -20,6 +18,13 @@
     <% else %>
       <%= render "public/posts/show", post: @post %>
     <% end %>
+    <div id="post_<%= @post.id %>">
+      <div class="favorite-btn"><%= render "public/favorites/favorite-btn", post: @post %></div>
+      <p class="comments-count">コメント数：<%= @post.comments.count %></p>
+      <div class="comments">
+        <%= render "public/comments/comment", post: @post, comment: @comment %>
+      </div>
+    </div>
     <% if @end_user == current_end_user %>
       <div class="pt-4">
         <%= link_to "編集する", edit_public_post_path(@post), class: "btn btn-secondary rounded-pill mr-5" %>

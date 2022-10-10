@@ -3,7 +3,7 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   has_many :posts, dependent: :destroy
   #自分がフォローされる
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -11,13 +11,16 @@ class EndUser < ApplicationRecord
   #自分がフォローする
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
-  
+
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   has_one_attached :profile_image
 
   validates :name, presence: true
   validates :nickname, presence: true
   validates :introduction, presence: true
-  
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -29,7 +32,7 @@ class EndUser < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
   def follow(user)
     relationships.create(followed_id: user.id)
   end
