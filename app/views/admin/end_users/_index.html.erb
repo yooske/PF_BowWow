@@ -12,6 +12,7 @@
       <tr>
         <td><%= image_tag end_user.get_profile_image(50,50) %></td>
         <td><%= end_user.nickname %></td>
+        <td><%= end_user.introduction %></td>
         <td><%= render "public/relationships/btn", end_user: end_user %></td>
         <td><%= link_to 'ユーザーページ', public_end_user_path(end_user) %></td>
       </tr>

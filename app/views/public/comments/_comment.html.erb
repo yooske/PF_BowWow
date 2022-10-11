@@ -2,8 +2,10 @@
   <% post.comments.each do |comment| %>
     <tr>
       <td>
-        <%= image_tag comment.end_user.get_profile_image(50, 50),class: "pr-1" %>
-        <%= comment.end_user.name %>
+        <%= link_to public_end_user_path(comment.end_user), class: "d-flex text-dark" do %>
+          <%= image_tag comment.end_user.get_profile_image, size: "50x50", class: "rounded-circle profile-icon pr-1" %>
+          <%= comment.end_user.name %>
+        <% end %>
       </td>
       <td class="px-4"><%= comment.comment %></td>
       <% if comment.end_user == current_end_user %>

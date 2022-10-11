@@ -1,3 +1,91 @@
 // Place all the styles related to the public/chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.balloon {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.balloon .profile-icon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.balloon .profile-icon img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.message {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #fff;
+}
+.message:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #fff;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.message p {
+  margin: 0;
+  padding: 0;
+}
+.my-message {
+  margin: 10px 0;
+}
+.my-message p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #a7d28d;
+  font-size: 15px;
+}
+
+.my-message p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #a7d28d;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+.self-message {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #a7d28d;
+  font-size: 15px;
+}
+
+.self-message:after {
+ content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #a7d28d;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}

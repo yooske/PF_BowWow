@@ -1,0 +1,12 @@
+<% chats.each do |chat| %>
+  <% if chat.end_user_id == current_end_user.id %>
+    <div class="balloon">
+      <div class="my-message"><p class="float-right"><%= chat.message %></p></div>
+    </div>
+  <% else %>
+    <div class="balloon">
+      <div class="profile-icon"><%= image_tag chat.end_user.get_profile_image(50,50),class: "rounded-circle" %></div>
+      <div class="message"><p class="float-left"><%= chat.message %></p></div>
+    </div>
+  <% end %>
+<% end %>

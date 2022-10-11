@@ -1,7 +1,7 @@
 <div class="container">
   <div class="main-visual col-8 mx-auto">
-    <h4 class="py-4 text-center">マイページ</h4>
-    <div class="mb-4 text-center"><%= image_tag @end_user.get_profile_image(140,140) %></div>
+    <h4 class="py-4 text-center">プロフィール</h4>
+    <div class="mb-4 text-center"><%= image_tag @end_user.get_profile_image, size: "140x140",class: "rounded-circle profile-icon" %></div>
     <table class="table">
       <tbody>
         <tr>
@@ -26,6 +26,7 @@
               <%= link_to "プロフィールを編集する", edit_public_end_user_path(@end_user), class: "btn btn-info rounded-pill" %>
             <% else %>
               <%= render "public/relationships/btn", end_user: @end_user %>
+              <%= link_to "チャット", public_chat_path(@end_user), class: "btn btn-sm btn-info rounded-pill" %>
             <% end %>
           </td>
         </tr>
