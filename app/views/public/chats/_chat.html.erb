@@ -5,7 +5,7 @@
     </div>
   <% else %>
     <div class="balloon">
-      <div class="profile-icon"><%= image_tag chat.end_user.get_profile_image(50,50),class: "rounded-circle" %></div>
+      <div class="profile-icon"><%= image_tag chat.end_user.get_profile_image, size: "50x50", class: "rounded-circle profile-icon mr-4" %></div>
       <div class="message"><p class="float-left"><%= chat.message %></p></div>
     </div>
   <% end %>

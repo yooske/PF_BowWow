@@ -10,7 +10,7 @@
   <tbody>
     <% end_users.each do |end_user| %>
       <tr>
-        <td><%= image_tag end_user.get_profile_image(50,50) %></td>
+        <td><%= image_tag end_user.get_profile_image, size: "50x50", class: "rounded-circle profile-icon mr-4" %></td>
         <td><%= end_user.nickname %></td>
         <td><%= end_user.introduction %></td>
         <td><%= render "public/relationships/btn", end_user: end_user %></td>

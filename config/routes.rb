@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     resources :chats, only: [:show, :create]
   end
   namespace :public do
+    resources :rooms, only: [:index]
+  end
+  namespace :public do
     resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
