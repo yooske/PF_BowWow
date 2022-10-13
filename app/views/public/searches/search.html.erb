@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <h4 class="col-12 mb-4">投稿検索　："<%= @content %>"</h4>
+  </div>
+  <% if @records.exists? %>
+    <%= render "public/posts/index", posts: @records %>
+  <% else %>
+    <div class="col-12">"<%= @content %>"を含む投稿はありません</div>
+  <% end %>
+</div>

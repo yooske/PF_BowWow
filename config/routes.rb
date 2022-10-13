@@ -50,6 +50,10 @@ Rails.application.routes.draw do
   namespace :public do
     get 'homes/about', as: 'about'
   end
+  
+  namespace :public do
+    get '/search', to: 'searches#search'
+  end
 
   devise_for :end_users,skip: [:passwords], controllers: {
     registrations: "public/registrations",

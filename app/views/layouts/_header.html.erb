@@ -1,8 +1,8 @@
 <header>
   <div class="container">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="row navbar navbar-expand-lg">
       <%= link_to root_path do %>
-        <h2>BowWow</h2>
+        <%= image_tag 'logo2.PNG' %>
       <% end %>
       <ul class="navbar-nav ml-auto">
         <% if end_user_signed_in? %>
@@ -17,7 +17,7 @@
         <% end %>
       </ul>
     </nav>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="row navbar navbar-expand-lg">
       <ul class="col-12 navbar-nav mx-auto justify-content-between">
         <li>
           <%= link_to root_path, class: "btn btn-light rounded-pill" do %>
@@ -32,18 +32,6 @@
           <% end %>
         </li>
         <li>
-          <%= link_to public_posts_path, class: "btn btn-light rounded-pill" do %>
-            <i class="fas fa-camera-retro"></i>
-            写真
-          <% end %>
-        </li>
-        <li>
-          <%= link_to public_posts_path, class: "btn btn-light rounded-pill" do %>
-            <i class="far fa-play-circle"></i>
-            動画
-          <% end %>
-        </li>
-        <li>
           <%= link_to public_rooms_path, class: "btn btn-light rounded-pill" do %>
             <i class="far fa-comments"></i>
             チャット一覧
@@ -55,6 +43,7 @@
             グループ一覧
           <% end %>
         </li>
+        <li><%= render "public/searches/form" %></li>
       </ul>
     </nav>
   </div>

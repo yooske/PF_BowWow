@@ -17,6 +17,11 @@ header {
   background-color: #dcd6d2;
 }
 
+header img {
+  width: 220px;
+  height: auto;
+}
+
 header .btn {
   color: #3f312b;
 }

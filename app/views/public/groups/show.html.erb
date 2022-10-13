@@ -1,2 +1,27 @@
-<h1>Public::Groups#show</h1>
-<p>Find me in app/views/public/groups/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h4 class="col-6 mb-4"><%= @group.name %></h4>
+    <p class="col-6 float-right">
+      <%= render "public/groups/btn", group: @group %>
+    </p>
+  </div>
+  <div class="row main-visual shadow-sm p-4 pb-4 bg-body rounded d-flex align-items-center">
+    <div class="col-2">グループメンバー</div>
+    <div class="col-10 d-flex">
+      <% @group.end_users.each do |end_user| %>
+        <div class="mr-3">
+          <%= link_to public_end_user_path(end_user), class: "text-dark" do %>
+            <%= image_tag end_user.get_profile_image, size: "50x50",  class: "rounded-circle profile-icon mr-2" %>
+            <%= end_user.nickname %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @group.end_users.include?(current_end_user) %>
+    <div class="row mt-5">
+      <div class="main-visual shadow-sm p-4 pb-4 bg-body rounded d-flex align-items-center"></div>
+    </div>
+  <% end %>
+</div>

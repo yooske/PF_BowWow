@@ -14,7 +14,6 @@
       <%= image_tag @post.image, class: "image mb-4" %><br>
       <%= render "public/posts/show", post: @post %>
     <% elsif @post.video.attached? %>
-      <%#= video_tag rails_blob_path(@post.video), size:"400x300" %>
       <video class="video" src="<%= rails_blob_path(@post.video) %>" type="video/mp4" controls></video>
       <%= render "public/posts/show", post: @post %>
     <% else %>
