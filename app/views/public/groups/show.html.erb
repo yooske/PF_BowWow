@@ -21,7 +21,23 @@
 
   <% if @group.end_users.include?(current_end_user) %>
     <div class="row mt-5">
-      <div class="main-visual shadow-sm p-4 pb-4 bg-body rounded d-flex align-items-center"></div>
+      <div class="col-10 mx-auto main-visual shadow-sm p-4 pb-4 bg-body rounded">
+        <div class="group-chat-message">
+          <%= render "public/chats/chat", chats: @group_chats %>
+        </div>
+      </div>
+      <div class="mx-auto">
+        <%= form_with model: @group_chat, url: public_group_chats_path, method: :post,data: {remote: true} do |f| %>
+          <p class="text-center pt-3">
+            <%= f.text_field :message, size: 40 %>
+            <%= f.hidden_field :group_id %>
+            <%= f.submit "送信", class: "ml-3 btn btn-sm btn-info rounded-pill" %>
+          </p>
+        <% end %>
+        <div class="errors">
+          <%= render "layouts/error_message", obj: @group_chat %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

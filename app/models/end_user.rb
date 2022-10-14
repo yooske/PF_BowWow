@@ -19,6 +19,7 @@ class EndUser < ApplicationRecord
   has_many :rooms, through: :user_rooms
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
+  has_many :group_chats, dependent: :destroy
 
   has_one_attached :profile_image
 

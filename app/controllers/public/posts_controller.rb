@@ -1,6 +1,13 @@
 class Public::PostsController < ApplicationController
   def index
-    @posts = Post.page(params[:page]).per(6)
+     #1週間分のいいね合計順にsortするための記述
+    to  = Time.current.at_end_of_day
+    from  = (to - 6.day).at_beginning_of_day
+    posts = Post.all.sort {|a,b|
+    b.favorites.where(created_at: from...to).size <=>
+    a.favorites.where(created_at: from...to).size
+    }
+    @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
     #タグを選択して関連する投稿を表示する
     if params[:tag_ids]
 

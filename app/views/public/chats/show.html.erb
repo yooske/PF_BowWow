@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 id="room" data-room="<%= @room.id %>" data-end_user="<%= current_end_user.id %>"><%= @end_user.name %>さん</h4>
+  <h4 id="room" data-room="<%= @room.id %>" data-end_user="<%= current_end_user.id %>"><%= @end_user.name %> さんとのチャット</h4>
   <div class="chat-message main-visual col-lg-8 mx-auto shadow-sm p-5 pb-4 bg-body rounded">
     <%= render "public/chats/chat", chats: @chats %>
   </div>

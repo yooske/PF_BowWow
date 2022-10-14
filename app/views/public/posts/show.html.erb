@@ -10,19 +10,23 @@
         <%= render "public/relationships/btn", end_user: @end_user %>
       </div>
     </div>
+    <!--投稿が画像の時-->
     <% if @post.image.attached? %>
       <%= image_tag @post.image, class: "image mb-4" %><br>
       <%= render "public/posts/show", post: @post %>
     <% elsif @post.video.attached? %>
+    <!--投稿が動画の時-->
       <video class="video" src="<%= rails_blob_path(@post.video) %>" type="video/mp4" controls></video>
       <%= render "public/posts/show", post: @post %>
     <% else %>
+    <!--投稿が文章のみの時-->
       <%= render "public/posts/show", post: @post %>
     <% end %>
     <div id="post_<%= @post.id %>">
       <div class="favorite-btn"><%= render "public/favorites/favorite-btn", post: @post %></div>
-      <p class="comments-count">コメント数：<%= @post.comments.count %></p>
-      <div class="comments">
+      <p class="comments-count"><i class="far fa-comment-dots"></i>コメント数：<%= @post.comments.count %></p>
+      <p class="mt-n2"><%= l @post.created_at, format: :short %></p>
+      <div class="comments border-top pt-3">
         <%= render "public/comments/comment", post: @post, comment: @comment %>
       </div>
     </div>

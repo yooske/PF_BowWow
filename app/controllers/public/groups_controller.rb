@@ -20,6 +20,8 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @group_chats = @group.group_chats
+    @group_chat = GroupChat.new(group_id: @group.id)
   end
 
   def edit

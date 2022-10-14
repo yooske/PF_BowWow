@@ -22,3 +22,30 @@
   left:79%;
   transform: translate(-40%,-50%);
 }
+
+.text-box {
+  padding: 20px 0;
+}
+.text-box2 {
+  background-color: #f8f4e6;
+  padding: 20px 0;
+}
+
+.about-img {
+  height: 180px;
+}
+
+.about-img2 {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.subtitle {
+  color: #fa8072;
+  font-weight: 500;
+}
+.line-height {
+  line-height: 1.5;
+}

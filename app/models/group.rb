@@ -2,6 +2,7 @@ class Group < ApplicationRecord
   belongs_to :owner, class_name: 'EndUser'
   has_many :group_users
   has_many :end_users, through: :group_users, source: :end_user, dependent: :destroy
+  has_many :group_chats, dependent: :destroy
 
   has_one_attached :image
 
