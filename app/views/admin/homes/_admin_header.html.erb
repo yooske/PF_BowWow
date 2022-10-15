@@ -2,7 +2,7 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg">
       <%= link_to root_path do %>
-        <h2>BowWow</h2>
+        <%= image_tag 'logo.PNG' %>
       <% end %>
       <ul class="navbar-nav ml-auto">
         <li class="mr-3">管理者画面</li>
@@ -25,11 +25,13 @@
         </li>
         <li>
           <%= link_to admin_tags_path, class: "btn btn-light rounded-pill" do %>
+            <i class="fas fa-tags"></i>
             タグ作成
           <% end %>
         </li>
         <li>
           <%= link_to admin_end_users_path, class: "btn btn-light rounded-pill" do %>
+            <i class="fas fa-user"></i>
             会員一覧
           <% end %>
         </li>

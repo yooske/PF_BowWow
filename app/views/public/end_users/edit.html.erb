@@ -1,34 +1,36 @@
 <div class="container">
-  <div class="col-8 mx-auto">
-    <h4 class="mb-5 text-center">会員情報変更</h4>
-    <%= render 'layouts/error_message', obj: @end_user %>
-    <%= form_with model: @end_user, url: public_end_user_path(@end_user) do |f| %>
-      <div class="field my-4 text-center">
-        <%= f.label :profile_image, 'プロフィール画像　　　' %>
-        <%= f.file_field :profile_image, placeholder: "Profile Image", accept: "image/*", autofocus: true, autocomplete: "profile_image" %>
-      </div>
-      <div class="field my-4 text-center">
-        <%= f.label :name, '名前　　　　　　　　　　　　　　　' %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-      </div>
-      <div class="field my-4 text-center">
-        <%= f.label :nickname, 'ニックネーム　　　　　　　　　　　' %>
-        <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
-      </div>
-      <div class="field my-4 text-center">
-        <%= f.label :email, 'メールアドレス　　　　　　　　　　' %>
-        <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-      <div class="field my-4 text-center">
-        <%= f.label :introduction, '自己紹介　　　　　　　　　　　　　' %>
-        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "mr-3" %>
-      </div>
-      <div class="actions text-center my-3">
-        <%= f.submit "変更する", class: "btn btn-secondary rounded-pill" %>
-      </div>
-      <div class="actions text-center my-3">
-        <%= link_to "退会する", confirm_public_end_users_path, class: "btn btn-danger rounded-pill" %>
-      </div>
-    <% end %>
+  <div class="row">
+    <div class="mx-auto">
+      <h4 class="mb-5 text-center">会員情報変更</h4>
+      <%= render 'layouts/error_message', obj: @end_user %>
+      <%= form_with model: @end_user, url: public_end_user_path(@end_user) do |f| %>
+        <div class="field my-4">
+          <%= f.label :profile_image, 'プロフィール画像　　　　' %>
+          <%= f.file_field :profile_image, placeholder: "Profile Image", accept: "image/*", autocomplete: "profile_image" %>
+        </div>
+        <div class="field my-4">
+          <%= f.label :name, '名前　　　　　　　　　　' %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        </div>
+        <div class="field my-4">
+          <%= f.label :nickname, 'ニックネーム　　　　　　' %>
+          <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+        </div>
+        <div class="field my-4">
+          <%= f.label :email, 'メールアドレス　　　　　' %>
+          <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <div class="field my-4">
+          <%= f.label :introduction, '自己紹介　　　　　　　　' %>
+          <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "mr-3" %>
+        </div>
+        <div class="actions text-center my-3">
+          <%= f.submit "変更する", class: "btn btn-info rounded-pill" %>
+        </div>
+        <div class="actions text-center my-3">
+          <%= link_to "退会する", confirm_public_end_users_path, class: "btn btn-danger rounded-pill" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

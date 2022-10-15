@@ -1,0 +1,16 @@
+<table>
+  <h5>コメント</h5>
+  <% post.comments.each do |comment| %>
+    <tr class="border-bottom">
+      <td class="py-3">
+        <%= link_to admin_end_user_path(comment.end_user), class: "d-flex text-dark" do %>
+          <%= image_tag comment.end_user.get_profile_image, size: "50x50", class: "rounded-circle profile-icon pr-1" %>
+          <%= comment.end_user.name %>
+        <% end %>
+      </td>
+      <td class="px-5"><%= comment.comment %></td>
+      <td class="pr-5"><%= l comment.created_at, format: :short %></td>
+      <td><%= link_to '削除する', admin_post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger rounded-pill" %></td>
+    </tr>
+  <% end %>
+</table>

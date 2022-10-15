@@ -5,7 +5,7 @@
     <%= form_with model: @tag, url: admin_tags_path, method: :post, class: "d-flex" do |f| %>
       <div class="px-3">タグ名</div>
       <div class="px-3"><%= f.text_field :name %></div>
-      <div class="px-3"><%= f.submit 'タグを作成する', class: "btn btn-light btn-sm rounded-pill" %></div>
+      <div class="px-3"><%= f.submit 'タグを作成する', class: "btn btn-success btn-sm rounded-pill" %></div>
     <% end %>
   </div>
   <table class="table">
@@ -13,7 +13,7 @@
     <% @tags.each do |tag| %>
       <tbody>
         <td><%= tag.name %></td>
-        <td><%= link_to "編集する", edit_admin_tag_path(tag), class: 'btn btn-secondary rounded-pill' %></td>
+        <td><%= link_to "編集する", edit_admin_tag_path(tag), class: 'btn btn-sm btn-secondary rounded-pill' %></td>
       </tbody>
     <% end %>
   </table>

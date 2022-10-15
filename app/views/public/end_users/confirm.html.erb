@@ -1,13 +1,18 @@
 <div class="container">
-  <div class="col-8 mx-auto">
-    <h2 class="mb-5 text-center">本当に退会しますか？</h2>
-    <p class="mb-5">
-      退会すると、会員登録情報や<br>
-      投稿やグループの参加ができなくなります。<br>
-      また、これまでの投稿も見ることができなくなります。<br>
-      退会する場合は、「退会する」をクリックしてください。
-    </p>
-    <%= link_to '退会しない', edit_public_end_user_path(current_end_user), class: "btn btn-secondary" %>
-    <%= link_to '退会する', withdraw_public_end_users_path, method: :patch, class: "btn btn-danger float-right" %>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2 class="mb-5">本当に退会しますか？</h2>
+    </div>
+    <div class="col-6 mx-auto">
+      <p class="line-height mb-5">
+        退会すると、会員登録情報や投稿やグループの参加ができなくなります。<br>
+        また、これまでの投稿も見ることができなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+      <div class="text-center">
+        <%= link_to '退会しない', edit_public_end_user_path(current_end_user), class: "btn btn-secondary mr-5" %>
+        <%= link_to '退会する', withdraw_public_end_users_path, method: :patch, class: "btn btn-danger ml-5" %>
+      </div>
+    </div>
   </div>
 </div>

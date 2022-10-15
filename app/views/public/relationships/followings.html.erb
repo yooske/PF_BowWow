@@ -1,7 +1,7 @@
 <div class="container">
   <h4 class="mb-4">フォロー</h4>
   <% if @end_users.exists? %>
-    <%= render "admin/end_users/index", end_users: @end_users %>
+    <%= render "public/end_users/index", end_users: @end_users %>
   <% else %>
     <p>フォローしているユーザーはいません</p>
   <% end %>

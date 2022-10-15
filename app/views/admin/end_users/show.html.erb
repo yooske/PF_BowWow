@@ -1,2 +1,37 @@
-<h1>Admin::EndUsers#show</h1>
-<p>Find me in app/views/admin/end_users/show.html.erb</p>
+<div class="container">
+  <div class="main-visual col-8 mx-auto">
+    <h4 class="py-4 text-center">プロフィール</h4>
+    <div class="mb-4 text-center"><%= image_tag @end_user.get_profile_image, size: "140x140",class: "rounded-circle profile-icon" %></div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><h5>名前</h5></td>
+          <td><h5><%= @end_user.name %></h5></td>
+        </tr>
+        <tr>
+          <td><h5>ニックネーム</h5></td>
+          <td><h5><%= @end_user.nickname %></h5></td>
+        </tr>
+        <tr>
+          <td><h5>自己紹介</h5></td>
+          <td><h5><%= @end_user.introduction %></h5></td>
+        </tr>
+        <tr class="border-bottom">
+          <td><h5>会員状態</h5></td>
+          <td>
+            <% if @end_user.is_deleted == false %>
+              <strong class="text-success"><%= "有効" %></strong>
+            <% else %>
+              <strong class= "text-secondary"><%= "退会" %></strong>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-4"><%= link_to "プロフィールを編集する", edit_admin_end_user_path(@end_user), class: "btn btn-info rounded-pill" %></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+

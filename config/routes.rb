@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :end_users, only: [:index, :show, :edit, :update]
   end
   namespace :admin do
-    resources :posts, only: [:show, :destroy]
+    resources :posts, only: [:show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
   end
   namespace :admin do
     root to: "homes#top"
@@ -50,7 +52,7 @@ Rails.application.routes.draw do
   namespace :public do
     get 'homes/about', as: 'about'
   end
-  
+
   namespace :public do
     get '/search', to: 'searches#search'
   end

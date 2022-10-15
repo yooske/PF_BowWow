@@ -7,4 +7,5 @@
   <% else %>
     <div class="col-12">"<%= @content %>"を含む投稿はありません</div>
   <% end %>
+  <%= paginate @records %>
 </div>

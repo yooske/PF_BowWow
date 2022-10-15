@@ -22,20 +22,18 @@
         </tr>
         <tr>
           <td class="py-4">
-            <% if @end_user == current_end_user %>
-              <%= link_to "プロフィールを編集する", edit_public_end_user_path(@end_user), class: "btn btn-info rounded-pill" %>
-            <% else %>
-              <%= render "public/relationships/btn", end_user: @end_user %>
-              <%= link_to "チャット", public_chat_path(@end_user), class: "btn btn-sm btn-info rounded-pill" %>
+            <% if end_user_signed_in? %>
+              <% if @end_user == current_end_user %>
+                <%= link_to "プロフィールを編集する", edit_public_end_user_path(@end_user), class: "btn btn-info rounded-pill" %>
+              <% else %>
+                <%= render "public/relationships/btn", end_user: @end_user %>
+                <%= link_to "チャット", public_chat_path(@end_user), class: "btn btn-sm btn-info rounded-pill" %>
+              <% end %>
             <% end %>
           </td>
         </tr>
       </tbody>
     </table>
     </div>
-  </div>
-  <div>
-    <h4 class="text-center mt-3">投稿一覧</h4>
-    <!--ユーザーの投稿一覧を表示-->
   </div>
 </div>

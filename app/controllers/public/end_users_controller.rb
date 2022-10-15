@@ -20,7 +20,7 @@ class Public::EndUsersController < ApplicationController
   end
 
   def withdraw
-    @end_user = EndUser.find(params[:id])
+    @end_user = current_end_user
     # is_deletedカラムをtrueに変更することで削除フラグを立てる
     @end_user.update(is_deleted: true)
     reset_session

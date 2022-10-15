@@ -4,19 +4,19 @@
       <div class="post py-3">
       <!--投稿が画像の時-->
       <% if post.image.attached? %>
-        <%= link_to public_post_path(post), class: "text-dark" do %>
+        <%= link_to admin_post_path(post), class: "text-dark" do %>
           <p class="image-size text-center"><%= image_tag post.image, class: "col-md-12 mb-4" %></p>
           <h5 class="border-bottom pb-2 pl-4 mb-2"><%= post.title %></h5>
         <% end %>
       <!--投稿が動画の時-->
       <% elsif post.video.attached? %>
-        <%= link_to public_post_path(post), class: "text-dark" do %>
+        <%= link_to admin_post_path(post), class: "text-dark" do %>
           <p class="video-size text-center"><%= video_tag rails_blob_path(post.video),size: "200x150", class: "col-md-12 mb-4" %></p>
           <h5 class="border-bottom pb-2 pl-4 mb-2"><%= post.title %></h5>
         <% end %>
       <!--投稿が文章のみの時-->
       <% else %>
-        <%= link_to public_post_path(post), class: "text-dark" do %>
+        <%= link_to admin_post_path(post), class: "text-dark" do %>
           <h5 class="pb-2 pl-4 mb-2"><%= post.title %></h5>
         <% end %>
         <p class="border-bottom pb-2 pl-4 mb-2"><%= post.body %></p>
@@ -24,13 +24,13 @@
       <!--いいねとコメント数を表示-->
       <div class="d-flex" id="post_<%= post.id %>">
         <div class="favorite-btn px-4"><%= render "public/favorites/favorite-btn", post: post %></div>
-        <%= link_to public_post_path(post), class: "text-dark" do %>
+        <%= link_to admin_post_path(post), class: "text-dark" do %>
           <p class="comments-count"><i class="far fa-comment-dots"></i><%= post.comments.count %></p>
         <% end %>
         <p class="ml-auto mr-4"><%= l post.created_at, format: :very_short %></p>
       </div>
       <div class="border-top pt-3">
-        <%= render "public/posts/poster", post: post %>
+        <%= render "admin/posts/poster", post: post %>
       </div>
       </div>
     </div>

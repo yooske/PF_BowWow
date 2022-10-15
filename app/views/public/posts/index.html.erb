@@ -7,7 +7,10 @@
             <% Tag.all.each do |tag| %>
                 <div class="d-flex m-2"><%= check_box :tag_ids, tag.name %><p id="tag"><%= tag.name %></p></div>
             <% end %>
-            <p class="p-3"><%= submit_tag '検索' %></p>
+            <p class="p-3"><%= button_tag type: "submit", class: "tag_search" do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+            </p>
         <% end %>
       </div>
     </div>

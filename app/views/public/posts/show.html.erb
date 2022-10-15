@@ -24,17 +24,17 @@
     <% end %>
     <div id="post_<%= @post.id %>">
       <div class="favorite-btn"><%= render "public/favorites/favorite-btn", post: @post %></div>
-      <p class="comments-count"><i class="far fa-comment-dots"></i>コメント数：<%= @post.comments.count %></p>
+      <p><i class="far fa-comment-dots"></i><span class="comments-count">コメント数：<%= @post.comments.count %></span></p>
       <p class="mt-n2"><%= l @post.created_at, format: :short %></p>
+      <% if @end_user == current_end_user %>
+        <div class="pb-4">
+          <%= link_to "編集する", edit_public_post_path(@post), class: "btn btn-secondary rounded-pill mr-5" %>
+          <%= link_to "削除する", public_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger rounded-pill" %>
+        </div>
+      <% end %>
       <div class="comments border-top pt-3">
         <%= render "public/comments/comment", post: @post, comment: @comment %>
       </div>
     </div>
-    <% if @end_user == current_end_user %>
-      <div class="pt-4">
-        <%= link_to "編集する", edit_public_post_path(@post), class: "btn btn-secondary rounded-pill mr-5" %>
-        <%= link_to "削除する", public_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger rounded-pill" %>
-      </div>
-    <% end %>
   </div>
 </div>
