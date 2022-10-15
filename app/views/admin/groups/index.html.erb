@@ -1,2 +1,41 @@
-<h1>Admin::Groups#index</h1>
-<p>Find me in app/views/admin/groups/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h4 class="mb-4">グループ一覧</h4>
+    <div class="main-visual col-lg-12 shadow-sm p-5 pb-4 bg-body rounded">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="col-1"></th>
+            <th class="col-2">グループ名</th>
+            <th class="col-4">グループ紹介</th>
+            <th class="col-2">メンバー</th>
+            <th class="col-1"></th>
+            <th class="col-2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
+            <tr class="border-bottom">
+              <td class="col-1 align-middle border-left">
+                <%= link_to admin_group_path(group) do %>
+                  <%= image_tag group.get_image, size: "75x75", class: "rounded-circle group-icon" %>
+                <% end %>
+              </td>
+              <td class="col-2 align-middle border-right"><%= link_to "#{group.name}", public_group_path(group), class: "text-dark" %></td>
+              <td class="col-4 align-middle border-right"><%= group.introduction %></td>
+              <td class="col-2 align-middle border-right"><%= group.group_users.count %> 人</td>
+              <td class="col-1 align-middle border-right text-center">
+                <%= link_to admin_group_path(group), class: "door" do %>
+                  <i class="fas fa-door-open"></i>
+                <% end %>
+              </td>
+              <td class="col-2 align-middle border-right text-center">
+                <%= render "admin/groups/btn", group: group %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

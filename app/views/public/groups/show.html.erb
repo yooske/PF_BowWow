@@ -1,7 +1,10 @@
 <div class="container">
-  <div class="row">
-    <h4 class="col-6 mb-4"><%= @group.name %></h4>
-    <p class="col-6 float-right">
+  <div class="row pb-3">
+    <h4 class="col-6 my-auto">
+      <%= image_tag @group.get_image, size: "60x60", class: "rounded-circle group-icon mr-3" %>
+      <%= @group.name %>
+    </h4>
+    <p class="col-6 float-right my-auto">
       <%= render "public/groups/btn", group: @group %>
     </p>
   </div>

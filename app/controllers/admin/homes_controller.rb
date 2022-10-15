@@ -3,7 +3,7 @@ class Admin::HomesController < ApplicationController
      #1週間分のいいね合計順にsortするための記述
     to  = Time.current.at_end_of_day
     from  = (to - 6.day).at_beginning_of_day
-    posts = Post.all.sort {|a,b|
+    posts = Post.all.order(created_at: :desc).sort {|a,b|
     b.favorites.where(created_at: from...to).size <=>
     a.favorites.where(created_at: from...to).size
     }

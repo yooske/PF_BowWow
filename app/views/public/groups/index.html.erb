@@ -8,8 +8,9 @@
           <tr>
             <th class="col-1"></th>
             <th class="col-2">グループ名</th>
-            <th class="col-5">グループ紹介</th>
-            <th class="col-2">メンバー人数</th>
+            <th class="col-4">グループ紹介</th>
+            <th class="col-2">メンバー</th>
+            <th class="col-1"></th>
             <th class="col-2"></th>
           </tr>
         </thead>
@@ -22,8 +23,13 @@
                 <% end %>
               </td>
               <td class="col-2 align-middle border-right"><%= link_to "#{group.name}", public_group_path(group), class: "text-dark" %></td>
-              <td class="col-5 align-middle border-right"><%= group.introduction %></td>
+              <td class="col-4 align-middle border-right"><%= group.introduction %></td>
               <td class="col-2 align-middle border-right"><%= group.group_users.count %> 人</td>
+              <td class="col-1 align-middle border-right text-center">
+                <%= link_to public_group_path(group), class: "door" do %>
+                  <i class="fas fa-door-open"></i>
+                <% end %>
+              </td>
               <td class="col-2 align-middle border-right text-center">
                 <%= render "public/groups/btn", group: group %>
               </td>
