@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_end_user!, if: :public_url, except: [:index, :show]
+
   def index
      #1週間分のいいね合計順にsortするための記述
     to  = Time.current.at_end_of_day
@@ -26,7 +28,8 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
-    if @post.save!
+    if @post.save
+      flash[:notice] = "投稿しました"
       redirect_to public_post_path(@post)
     else
       render :new
@@ -46,6 +49,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      flash[:notice] = "投稿を更新しました"
       redirect_to public_post_path(@post)
     else
       render :edit
@@ -55,6 +59,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to public_posts_path
   end
 

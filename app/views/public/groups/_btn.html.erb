@@ -1,8 +1,10 @@
-<% if group.is_owned_by?(current_end_user) %>
-  <%= link_to "編集", edit_public_group_path(group), class: "btn btn-sm btn-secondary rounded-pill" %>
-  <%= link_to "削除", public_group_path(group), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger rounded-pill ml-3" %>
-<% elsif group.includesEndUser?(current_end_user) %>
-  <%= link_to 'グループを抜ける', public_group_group_users_path(group), method: :delete, class: "btn btn-sm btn-danger rounded-pill" %>
-<% else %>
-  <%= link_to '参加する', public_group_group_users_path(group), method: :post, class: "btn btn-sm btn-success rounded-pill" %>
+<% if end_user_signed_in? %>
+  <% if group.is_owned_by?(current_end_user) %>
+    <%= link_to "編集", edit_public_group_path(group), class: "btn btn-sm btn-secondary rounded-pill" %>
+    <%= link_to "削除", public_group_path(group), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger rounded-pill ml-3" %>
+  <% elsif group.includesEndUser?(current_end_user) %>
+    <%= link_to 'グループを抜ける', public_group_group_users_path(group), method: :delete, class: "btn btn-sm btn-danger rounded-pill" %>
+  <% else %>
+    <%= link_to '参加する', public_group_group_users_path(group), method: :post, class: "btn btn-sm btn-success rounded-pill" %>
+  <% end %>
 <% end %>

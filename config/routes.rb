@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :public do
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
     get 'homes/about', as: 'about'
   end
 

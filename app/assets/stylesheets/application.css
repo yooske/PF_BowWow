@@ -38,3 +38,8 @@ footer {
 .pagination>span {
   margin-right: 8px;
 }
+
+.flash {
+  color: #6f5436;
+  font-size: 12px;
+}

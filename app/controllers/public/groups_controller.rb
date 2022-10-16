@@ -1,4 +1,6 @@
 class Public::GroupsController < ApplicationController
+  before_action :authenticate_end_user!, if: :public_url, except: [:index, :show]
+
   def index
     @groups = Group.page(params[:page]).per(10)
   end
