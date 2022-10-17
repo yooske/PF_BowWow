@@ -27,11 +27,7 @@
                 <%= link_to "プロフィールを編集する", edit_public_end_user_path(@end_user), class: "btn btn-info rounded-pill" %>
               <% else %>
                 <%= render "public/relationships/btn", end_user: @end_user %>
-                <% if @end_user.is_deleted == false %>
-                  <%= link_to "チャット", public_chat_path(@end_user), class: "ml-3 btn btn-info rounded-pill" %>
-                <% else %>
-                  <p class="pt-3 text-danger">この会員は既に退会しています。</p>
-                <% end %>
+                <%= link_to "チャット", public_chat_path(@end_user), class: "ml-3 btn btn-info rounded-pill" %>
               <% end %>
             <% end %>
           </td>

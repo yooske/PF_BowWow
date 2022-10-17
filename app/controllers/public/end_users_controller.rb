@@ -22,22 +22,21 @@ class Public::EndUsersController < ApplicationController
     end
   end
 
-  def confirm
-  end
-
-  def withdraw
-    @end_user = current_end_user
-    # is_deletedカラムをtrueに変更することで削除フラグを立てる
-    @end_user.update(is_deleted: true)
-    reset_session
+  def destroy
+    @end_user = EndUser.find(params[:id])
+    @end_user.destroy
     flash[:notice] = "退会処理を実行致しました"
     redirect_to root_path
   end
 
+  def confirm
+  end
+
+
   private
 
   def end_user_params
-    params.require(:end_user).permit(:profile_image, :name, :nickname, :email, :introduction, :is_deleted)
+    params.require(:end_user).permit(:profile_image, :name, :nickname, :email, :introduction)
   end
 
 end

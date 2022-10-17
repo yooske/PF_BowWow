@@ -18,7 +18,7 @@ class EndUser < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
   has_many :group_users, dependent: :destroy
-  has_many :groups, through: :group_users
+  has_many :groups, through: :group_users, dependent: :destroy
   has_many :group_chats, dependent: :destroy
 
   has_one_attached :profile_image
@@ -33,10 +33,6 @@ class EndUser < ApplicationRecord
       profile_image.attach(io:File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image
-  end
-
-  def active_for_authentication?
-    super && (is_deleted == false)
   end
 
   def follow(user)

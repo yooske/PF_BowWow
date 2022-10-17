@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :show, :destroy]
   end
   namespace :admin do
-    resources :end_users, only: [:index, :show, :edit, :update]
+    resources :end_users, only: [:index, :show, :edit, :update, :destroy]
   end
   namespace :admin do
     resources :posts, only: [:show, :destroy] do
@@ -39,10 +39,9 @@ Rails.application.routes.draw do
     end
   end
   namespace :public do
-    resources :end_users, only: [:index, :show, :edit, :update] do
+    resources :end_users, only: [:index, :show, :edit, :update, :destroy] do
       collection do
         get :confirm
-        patch :withdraw
       end
       resource:relationships, only:[:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'

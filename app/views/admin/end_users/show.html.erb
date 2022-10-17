@@ -16,18 +16,11 @@
           <td><h5>自己紹介</h5></td>
           <td><h5><%= @end_user.introduction %></h5></td>
         </tr>
-        <tr class="border-bottom">
-          <td><h5>会員状態</h5></td>
-          <td>
-            <% if @end_user.is_deleted == false %>
-              <strong class="text-success"><%= "有効" %></strong>
-            <% else %>
-              <strong class= "text-secondary"><%= "退会" %></strong>
-            <% end %>
-          </td>
-        </tr>
         <tr>
-          <td class="py-4"><%= link_to "プロフィールを編集する", edit_admin_end_user_path(@end_user), class: "btn btn-info rounded-pill" %></td>
+          <td class="py-4">
+            <%= link_to "ユーザー情報を編集する", edit_admin_end_user_path(@end_user), class: "btn btn-info rounded-pill mr-3" %>
+            <%= link_to "ユーザーを退会させる", admin_end_user_path(@end_user), method: :delete, "data-confirm" => "本当に退会させますか？", class: "btn btn-danger rounded-pill" %>
+          </td>
         </tr>
       </tbody>
     </table>

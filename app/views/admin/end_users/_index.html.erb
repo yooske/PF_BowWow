@@ -2,25 +2,19 @@
   <thead>
     <tr>
       <th></th>
+      <th>名前</th>
       <th>ニックネーム</th>
       <th>自己紹介</th>
-      <th>会員状態</th>
-      <th colspan="2"></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% end_users.each do |end_user| %>
       <tr>
         <td><%= image_tag end_user.get_profile_image, size: "50x50", class: "rounded-circle profile-icon mr-4" %></td>
+        <td><%= end_user.name %></td>
         <td><%= end_user.nickname %></td>
         <td><%= end_user.introduction %></td>
-        <td>
-          <% if end_user.is_deleted == false %>
-            <strong class="text-success"><%= "有効" %></strong>
-          <% else %>
-            <strong class= "text-secondary"><%= "退会" %></strong>
-          <% end %>
-        </td>
         <td><%= link_to 'ユーザーページ', admin_end_user_path(end_user) %></td>
       </tr>
     <% end %>
