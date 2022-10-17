@@ -1,15 +1,16 @@
 class Admin::TagsController < ApplicationController
   def index
     @tag = Tag.new
-    @tags = Tag.page(params[:page]).per(8)
+    @tags = Tag.page(params[:page]).per(10)
   end
 
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
+      flash[:notice] = "タグを作成しました"
       redirect_to admin_tags_path
     else
-      @tags = Tag.all
+      @tags = Tag.page(params[:page]).per(10)
       render :index
     end
   end
@@ -21,6 +22,7 @@ class Admin::TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
+      flash[:notice] = "タグを更新しました"
       redirect_to admin_tags_path
     else
       render :edit

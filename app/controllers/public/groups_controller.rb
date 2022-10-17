@@ -14,6 +14,7 @@ class Public::GroupsController < ApplicationController
     @group.owner_id = current_end_user.id
     @group.end_users << current_end_user
     if @group.save
+      flash[:notice] = "グループを作成しました"
      redirect_to public_groups_path
     else
       render :new
@@ -34,6 +35,7 @@ class Public::GroupsController < ApplicationController
     @group = Group.find(params[:id])
     if @group.owner_id == current_end_user.id
       if @group.update(group_params)
+        flash[:notice] = "グループ情報を編集しました"
         redirect_to public_group_path(@group)
       else
         render :edit
@@ -47,6 +49,7 @@ class Public::GroupsController < ApplicationController
     @group = Group.find(params[:id])
     if @group.owner_id == current_end_user.id
       @group.destroy
+      flash[:notice] = "グループを削除しました"
       redirect_to public_groups_path
     end
   end

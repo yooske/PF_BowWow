@@ -41,5 +41,9 @@ footer {
 
 .flash {
   color: #6f5436;
-  font-size: 12px;
+  font-size: 14px;
+}
+
+.field_with_errors {
+  display: contents;
 }

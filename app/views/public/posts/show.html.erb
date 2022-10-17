@@ -35,6 +35,9 @@
       <div class="comments border-top pt-3">
         <%= render "public/comments/comment", post: @post, comment: @comment %>
       </div>
+      <div class="errors">
+        <%= render "layouts/error_message", obj: @comment %>
+      </div>
     </div>
   </div>
 </div>

@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :public do
-    resources :end_users, only: [:show, :edit, :update] do
+    resources :end_users, only: [:index, :show, :edit, :update] do
       collection do
         get :confirm
         patch :withdraw

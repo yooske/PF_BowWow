@@ -4,6 +4,9 @@
       <%= link_to root_path do %>
         <%= image_tag 'logo.PNG' %>
       <% end %>
+      <% flash.each do |message_type, message| %>
+      　　<div class="mx-auto my-auto flash alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <ul class="navbar-nav ml-auto">
         <li class="mr-3">管理者画面</li>
         <% if admin_signed_in? %>

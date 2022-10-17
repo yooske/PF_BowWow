@@ -6,7 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.post_id = @post.id
     @comment.end_user_id = current_end_user.id
-    @comment.save!
+    render :validater unless @comment.save
   end
 
   def destroy

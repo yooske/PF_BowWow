@@ -202,3 +202,32 @@ ja:
       last_word_connector: "、"
       two_words_connector: "、"
       words_connector: "、"
+  activerecord:
+    attributes:
+      tag:
+        name: "タグ名"
+    errors:
+      messages:
+        blank: "を入力してください。"
+  activerecord:
+    attributes:
+      post:
+        title: "タイトル"
+        body: "本文"
+  activerecord:
+    attributes:
+      chat:
+        message: "メッセージ"
+  activerecord:
+    attributes:
+      group:
+        name: "グループ名"
+        introduction: "紹介文"
+  activerecord:
+    attributes:
+      comment:
+        comment: "コメント"
+  activerecord:
+    attributes:
+      group_chat:
+        message: "メッセージ"
