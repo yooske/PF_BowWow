@@ -29,6 +29,11 @@ class Public::GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    if @group.owner_id == current_end_user.id
+      render :edit
+    else
+      redirect_to public_groups_path
+    end
   end
 
   def update

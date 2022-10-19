@@ -10,6 +10,11 @@ class Public::EndUsersController < ApplicationController
 
   def edit
     @end_user = EndUser.find(params[:id])
+    if @end_user == current_end_user
+      render "edit"
+    else
+      redirect_to public_end_user_path(@end_user)
+    end
   end
 
   def update

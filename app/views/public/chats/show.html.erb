@@ -1,16 +1,20 @@
 <div class="container">
-  <h4 id="room" data-room="<%= @room.id %>" data-end_user="<%= current_end_user.id %>"><%= @end_user.name %> さんとのチャット</h4>
-  <div class="chat-message main-visual col-lg-8 mx-auto shadow-sm p-5 pb-4 bg-body rounded">
-    <%= render "public/chats/chat", chats: @chats %>
-  </div>
-  <%= form_with model: @chat, url: public_chats_path, method: :post,data: {remote: true} do |f| %>
-  <p class="text-center pt-3">
-    <%= f.text_field :message, size: 40 %>
-    <%= f.hidden_field :room_id %>
-    <%= f.submit "送信", class: "ml-3 btn btn-sm btn-info rounded-pill" %>
-  </p>
-  <% end %>
-  <div class="errors">
-    <%= render "layouts/error_message", obj: @chat %>
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h4 id="room" data-room="<%= @room.id %>" data-end_user="<%= current_end_user.id %>"><%= @end_user.name %> さんとのチャット</h4>
+    </div>
+    <div class="chat-message main-visual col-lg-8 mx-auto shadow-sm p-5 pb-4 bg-body rounded">
+      <%= render "public/chats/chat", chats: @chats %>
+    </div>
+    <div class="col-12 text-center pt-3">
+    <%= form_with model: @chat, url: public_chats_path, method: :post,data: {remote: true} do |f| %>
+      <%= f.text_field :message, size: 40 %>
+      <%= f.hidden_field :room_id %>
+      <%= f.submit "送信", class: "ml-3 btn btn-sm btn-info rounded-pill" %>
+    </div>
+    <% end %>
+    <div class="errors mx-auto">
+      <%= render "layouts/error_message", obj: @chat %>
+    </div>
   </div>
 </div>

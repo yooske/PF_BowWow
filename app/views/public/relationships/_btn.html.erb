@@ -1,7 +1,7 @@
 <% if end_user_signed_in? %>
   <% if current_end_user != end_user %>
     <% if current_end_user.following?(end_user) %>
-      <%= link_to "フォロー外す", public_end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-secondary rounded-pill" %>
+      <%= link_to "フォローを外す", public_end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-secondary rounded-pill" %>
     <% else %>
       <%= link_to "フォローする", public_end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success rounded-pill" %>
     <% end %>
