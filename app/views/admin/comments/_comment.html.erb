@@ -5,7 +5,7 @@
       <td class="py-3">
         <%= link_to admin_end_user_path(comment.end_user), class: "d-flex text-dark" do %>
           <%= image_tag comment.end_user.get_profile_image, size: "50x50", class: "rounded-circle profile-icon pr-1" %>
-          <%= comment.end_user.name %>
+          <%= comment.end_user.nickname %>
         <% end %>
       </td>
       <td class="px-5"><%= comment.comment %></td>
