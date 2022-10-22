@@ -40,6 +40,9 @@ Rails.application.routes.draw do
   end
   namespace :public do
     resources :end_users, only: [:index, :show, :edit, :update, :destroy] do
+      member do
+        get 'posts' => 'end_users#posts', as: 'posts'
+      end
       collection do
         get :confirm
       end

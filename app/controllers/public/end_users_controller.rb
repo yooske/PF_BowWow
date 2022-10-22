@@ -37,6 +37,18 @@ class Public::EndUsersController < ApplicationController
   def confirm
   end
 
+  def posts
+    @end_user = EndUser.find(params[:id])
+    @posts = @end_user.posts.page(params[:page]).per(6)
+    #タグを選択して関連する投稿を表示する
+    if params[:tag_ids]
+      tag_names = []
+      params[:tag_ids].each do |key, value|
+        tag_names << key if value == "1"
+      end
+      @posts = @end_user.posts.joins(:tags).where(tags:{name: tag_names}).distinct.page(params[:page]).per(6)
+    end
+  end
 
   private
 
