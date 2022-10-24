@@ -3,8 +3,10 @@
     <div class="col-lg-8 mx-auto">
       <h4 id="room" data-room="<%= @room.id %>" data-end_user="<%= current_end_user.id %>"><%= @end_user.name %> さんとのチャット</h4>
     </div>
-    <div class="chat-message main-visual col-lg-8 mx-auto shadow-sm p-5 pb-4 bg-body rounded">
-      <%= render "public/chats/chat", chats: @chats %>
+    <div class="main-visual col-lg-8 mx-auto shadow-sm p-5 pb-4 bg-body rounded">
+      <div class="chat-message">
+        <%= render "public/chats/chat", chats: @chats %>
+      </div>
     </div>
     <div class="col-12 text-center pt-3">
     <%= form_with model: @chat, url: public_chats_path, method: :post,data: {remote: true} do |f| %>

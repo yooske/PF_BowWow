@@ -6,7 +6,8 @@
         <%= link_to public_chat_path(user_room.end_user), class: "d-flex pb-2 mb-2 border-bottom text-dark" do %>
           <div class="col-2"><%= image_tag user_room.end_user.get_profile_image, size: "50x50", class: "rounded-circle profile-icon" %></div>
           <div class="col-3"><%= user_room.end_user.nickname %></div>
-          <div class="col-7"><%= truncate(Chat.find_by(id: user_room.room.chat_ids.last)&.message, length: 20) %></div>
+          <div class="col-5"><%= truncate(Chat.find_by(id: user_room.room.chat_ids.last)&.message, length: 20) %></div>
+          <div class="col-2 text-secondary"><i class="far fa-clock clock-icon"></i> <%= time_ago_in_words(Chat.find_by(id: user_room.room.chat_ids.last).created_at) %>前</div>
         <% end %>
       <% end %>
     </div>

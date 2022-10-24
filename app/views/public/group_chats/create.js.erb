@@ -1,2 +1,2 @@
-$('.group-chat-message').append("<p class='self-message float-right'><%= @group_chat.message %></p>");
+$('.group-chat-message').append("<p class='self-message float-right'><span><%= time_ago_in_words(@group_chat.created_at) %>前</span><span><%= @group_chat.message %></span></p>");
 $('input[type=text]').val("")

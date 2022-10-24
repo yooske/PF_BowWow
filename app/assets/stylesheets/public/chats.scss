@@ -12,6 +12,10 @@
 }
 
 .message {
+  margin: 10px 0;
+}
+
+.message p{
   display: inline-block;
   position: relative;
   margin: 0 0 0 30px;
@@ -20,7 +24,8 @@
   border-radius: 12px;
   background: #fff;
 }
-.message:after {
+
+.message p:after {
   content: "";
   display: inline-block;
   position: absolute;
@@ -31,10 +36,13 @@
   -webkit-transform: rotate(35deg);
   transform: rotate(35deg);
 }
-.message p {
-  margin: 0;
-  padding: 0;
+
+.message span {
+  font-size: 12px;
+  padding: 0 5px;
+  vertical-align: bottom;
 }
+
 .my-message {
   margin: 10px 0;
 }
@@ -60,7 +68,13 @@
   transform: rotate(-35deg);
 }
 
-.self-message {
+.my-message span {
+  font-size: 12px;
+  padding: 0 5px;
+  vertical-align: bottom;
+}
+
+.self-message span:last-child {
   display: inline-block;
   position: relative;
   margin: 0 10px 0 0;
@@ -71,7 +85,7 @@
   font-size: 15px;
 }
 
-.self-message:after {
+.self-message span:last-child:after {
  content: "";
   position: absolute;
   top: 3px;
@@ -80,4 +94,11 @@
   border-left: 18px solid #a7d28d;
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
+}
+
+.self-message span:first-child{
+  color: #6c757d;
+  font-size: 12px;
+  padding: 0 5px;
+  vertical-align: bottom;
 }
