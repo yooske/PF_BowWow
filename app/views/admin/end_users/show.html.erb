@@ -19,8 +19,9 @@
         <tr>
           <td class="py-4">
             <%= link_to "ユーザー情報を編集する", edit_admin_end_user_path(@end_user), class: "btn btn-info rounded-pill mr-3" %>
-            <%= link_to "ユーザーを退会させる", admin_end_user_path(@end_user), method: :delete, "data-confirm" => "本当に退会させますか？", class: "btn btn-danger rounded-pill" %>
+            <%= link_to "退会させる", admin_end_user_path(@end_user), method: :delete, "data-confirm" => "本当に退会させますか？", class: "btn btn-danger rounded-pill" %>
           </td>
+          <td class="py-4"><%= link_to "投稿を見る", posts_admin_end_user_path(@end_user), class: "btn btn-success rounded-pill float-right" %></td>
         </tr>
       </tbody>
     </table>

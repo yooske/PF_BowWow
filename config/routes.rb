@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :show, :destroy]
   end
   namespace :admin do
-    resources :end_users, only: [:index, :show, :edit, :update, :destroy]
+    resources :end_users, only: [:index, :show, :edit, :update, :destroy] do
+      member do
+        get 'posts' => 'end_users#posts', as: 'posts'
+      end
+    end
   end
   namespace :admin do
     resources :posts, only: [:show, :destroy] do

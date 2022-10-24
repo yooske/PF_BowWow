@@ -28,6 +28,11 @@ class Admin::EndUsersController < ApplicationController
     redirect_to admin_end_users_path
   end
 
+  def posts
+    @end_user = EndUser.find(params[:id])
+    @posts = @end_user.posts.order(created_at: :desc).page(params[:page]).per(6)
+  end
+
   private
 
   def end_user_params
