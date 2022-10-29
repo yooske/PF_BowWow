@@ -7,6 +7,6 @@
       <div class="px-3"><%= f.text_field :name %></div>
       <div class="px-3"><%= f.submit '変更を保存', class: "btn btn-info btn-sm rounded-pill" %></div>
     <% end %>
+    <div class="mt-5 px-3"><%= link_to "一覧に戻る", admin_tags_path %></div>
   </div>
-  <%= link_to "back", admin_tags_path, class: "text-dark" %>
 </div>
