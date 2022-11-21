@@ -20,6 +20,7 @@ class EndUser < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
   has_many :group_chats, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   has_one_attached :profile_image
 

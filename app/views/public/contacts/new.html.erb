@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2 class="mb-5">お問い合わせフォーム</h2>
+    </div>
+    <div class="col-6 mx-auto">
+      <p class="line-height mb-5 text-center">
+        お問い合わせの項目を選択し、内容を記載の上、送信ください。
+      </p>
+      <div class="text-center">
+        <%= form_with model: @contact, url: public_contacts_path, method: :post do |f| %>
+          <p><%= f.select :category, options_for_select([["不適切な投稿・会員", 1], ["サイトの相談・不具合", 2], ["その他", 3]]), include_blank: "選択して下さい" %></p>
+          <p><%= f.text_area :body, class: "contact-form" %></p>
+          <p><%= f.submit "送信" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

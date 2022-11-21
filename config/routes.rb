@@ -34,6 +34,13 @@ Rails.application.routes.draw do
     resources :chats, only: [:show, :create]
   end
   namespace :public do
+    resources :contacts, only: [:new, :create, :index] do
+      collection do
+        get :complete
+      end
+    end
+  end
+  namespace :public do
     resources :rooms, only: [:index]
   end
   namespace :public do
