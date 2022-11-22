@@ -25,6 +25,7 @@
             <% if end_user_signed_in? %>
               <% if @end_user == current_end_user %>
                 <%= link_to "プロフィールを編集する", edit_public_end_user_path(@end_user), class: "btn btn-info rounded-pill" %>
+                <%= link_to "お問い合わせ一覧", public_contacts_path(@end_user), class: "btn btn-secondary rounded-pill" %>
               <% else %>
                 <%= render "public/relationships/btn", end_user: @end_user %>
                 <%= link_to "チャット", public_chat_path(@end_user), class: "ml-3 btn btn-info rounded-pill" %>

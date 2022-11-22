@@ -17,6 +17,8 @@ class Public::ContactsController < ApplicationController
   end
 
   def index
+    @end_user = current_end_user
+    @contacts = Contact.all
   end
 
   private

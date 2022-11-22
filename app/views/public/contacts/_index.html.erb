@@ -1,0 +1,28 @@
+<% if end_user.contacts.exists? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>氏名</th>
+        <th>項目</th>
+        <th>お問い合わせ内容</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contacts.each do |contact| %>
+        <tr>
+          <% if contact.end_user == current_end_user %>
+            <td><%= image_tag contact.end_user.get_profile_image, size: "50x50", class: "rounded-circle profile-icon mr-4" %></td>
+            <td><%= contact.end_user.name %></td>
+            <td><%= contact.category_i18n %></td>
+            <td><%= contact.body %></td>
+            <td><%= contact.status_i18n %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="my-4">お問い合わせをしていません</p>
+<% end %>

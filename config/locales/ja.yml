@@ -221,3 +221,13 @@ ja:
         introduction: "紹介文"
       comment:
         comment: "コメント"
+  enums:
+    contact:
+      category:
+        inappropriate_post_end_user: "不適切な投稿・会員"
+        consultation_problems: "サイトの相談・不具合"
+        others: "その他"
+      status:
+        outstanding: "未対応"
+        processing: "対応中"
+        closed: "対応済"
