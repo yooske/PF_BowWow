@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+  <div class="main-visual col-lg-8 mx-auto shadow-sm pt-4 pb-5 px-5 bg-body rounded">
+    <h3 class="mb-5">お問い合わせ詳細</h3>
+    <div class="border-bottom mb-2">
+      <label class="col-6">会員名</label>
+      <div class="col-6 d-inline"><%= @contact.end_user.name %></div>
+    </div>
+    <div class="border-bottom mb-2">
+      <label class="col-6">メールアドレス</label>
+      <div class="col-6 d-inline"><%= @contact.end_user.email %></div>
+    </div>
+    <div class="border-bottom mb-2">
+      <label class="col-6">項目</label>
+      <div class="col-6 d-inline"><%= @contact.category_i18n %></div>
+    </div>
+    <div class="border-bottom mb-2">
+      <label class="col-12">お問い合わせ内容</label>
+      <div class="col-12 mb-2"><%= @contact.body %></div>
+    </div>
+    <div class="border-bottom mb-2">
+      <%= form_with model: @contact, url: admin_contact_path(@contact), method: :patch do |f| %>
+      <label class="col-6">対応状況</label>
+        <div class="col-6 d-inline">
+          <%= f.select :status, Contact.statuses_i18n.invert %>
+          <%= f.submit '変更', class: "btn btn-sm btn-success rounded-pill ml-3 mb-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

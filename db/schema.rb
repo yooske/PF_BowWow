@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2022_11_16_020750) do
   create_table "contacts", force: :cascade do |t|
     t.integer "end_user_id"
     t.integer "category"
-    t.text "body"
+    t.string "body"
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -3,7 +3,7 @@ class CreateContacts < ActiveRecord::Migration[6.1]
     create_table :contacts do |t|
       t.integer :end_user_id
       t.integer :category
-      t.text :body
+      t.string :body
       t.integer :status, default: 0
 
       t.timestamps

@@ -1,0 +1,34 @@
+<div class="main-visual col-lg-12 shadow-sm pt-4 pb-5 px-5 bg-body rounded">
+  <h4 class="pb-3">お問い合わせ一覧</h4>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="col-1">会員</th>
+        <th class="col-1"></th>
+        <th class="col-3">項目</th>
+        <th class="col-4">お問い合わせ内容</th>
+        <th class="col-2">対応状況</th>
+        <th class="col-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contacts.each do |contact| %>
+        <tr class="border-bottom">
+          <td class="col-1 align-middle"><%= image_tag contact.end_user.get_profile_image, size: "50x50", class: "rounded-circle profile-icon mr-4" %></td>
+          <td class="col-1 align-middle"><%= contact.end_user.name %></td>
+          <td class="col-3 align-middle border-left"><%= contact.category_i18n %></td>
+          <td class="col-4 align-middle border-left border-right"><%= truncate(contact.body, length: 20) %></td>
+          <td class="col-2 align-middle border-right text-center">
+            <% if contact.status == "closed" %>
+              <span class="text-success"><%= contact.status_i18n %></span>
+            <% elsif contact.status == "processing" %>
+              <span class="text-secondary"><%= contact.status_i18n %></span>
+            <% else %>
+              <span class="text-danger"><%= contact.status_i18n %></span>
+            <% end %>
+          </td>
+          <td class="col-2 align-middle text-center"><%= link_to "詳細", admin_contact_path(contact), class: "btn btn-sm btn-success rounded-pill" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
